@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import AddToCart from '@components/ProductSummary/AddToCart'
 
 const ProductPage = () => {
-  const [product, setProduct] = useState<TProduct>()
+  // const [product, setProduct] = useState<TProduct>()
+  const [product, setProduct] = useState<TProduct | null>(null)
+
   const {
     query: { id },
   } = useRouter()
@@ -30,15 +33,7 @@ const ProductPage = () => {
               <span className="py-1 w-28 text-center text-xs bg-gray-200 rounded-md text-gray-700">{`SKU ${product?.sku}`}</span>
             </div>
             <div className="flex my-4">
-              <input
-                type="number"
-                placeholder="Cantidad"
-                min="1"
-                className="border-gray-400 w-full"
-              />
-              <button className="bg-green-500 text-white font-bold px-3 flex-none">
-                Add to Cart
-              </button>
+              {product && <AddToCart product={product} />}
             </div>
           </div>
         </div>

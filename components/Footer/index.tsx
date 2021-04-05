@@ -9,12 +9,14 @@ const Footer = () => (
             <h2 className="font-bold leading-10">Nosotros</h2>
           </li>
           <li>
-            <a
-              href="#"
-              className="text-blue-500 hover:text-green-500 hover:font-bolder"
-            >
-              Conoce más
-            </a>
+            <Link href="/about" passHref>
+              <a
+                href="#"
+                className="text-blue-500 hover:text-green-500 hover:font-bolder"
+              >
+                Conoce más
+              </a>
+            </Link>
           </li>
         </ul>
       </div>

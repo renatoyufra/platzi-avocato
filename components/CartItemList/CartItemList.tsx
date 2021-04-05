@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import { CartItemType } from '@store/Cart'
 
 type CartItemListProps = {
-  items: any[]
+  items: CartItemType[]
   removeFromCart: (product: TProduct) => void
 }
 
@@ -18,7 +19,7 @@ const CartItemList = ({ items, removeFromCart }: CartItemListProps) => {
     )
   }
   return (
-    <div>
+    <>
       <ul className="w-9/12 mx-auto">
         {items.map((item) => {
           // deestructuramos
@@ -38,7 +39,7 @@ const CartItemList = ({ items, removeFromCart }: CartItemListProps) => {
                 <p>Some more information goes here...</p>
               </div>
               <div className="flex">
-                <button onClick={() => removeFromCart}>
+                <button onClick={() => removeFromCart(item)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -69,7 +70,7 @@ const CartItemList = ({ items, removeFromCart }: CartItemListProps) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

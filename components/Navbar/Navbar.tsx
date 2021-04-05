@@ -2,9 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Avocado, Basket } from '@components/SVGIcons'
+import { useCart } from '@store/Cart'
 
 export default function Navbar() {
   const { pathname } = useRouter()
+  const { count: cartCount } = useCart()
 
   return (
     <nav className="shadow-lg font-medium md:text-lg text-md">
@@ -26,7 +28,8 @@ export default function Navbar() {
               (pathname === '/cart' ? 'bg-gray-200' : '')
             }
           >
-            <Basket size="36" /> <span>Canasta</span>
+            <Basket size="36" />{' '}
+            <span>Canasta {cartCount ? `(${cartCount})` : null}</span>
           </a>
         </Link>
       </menu>

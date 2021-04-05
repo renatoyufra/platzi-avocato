@@ -1,13 +1,14 @@
 import React from 'react'
-import Navbar from 'components/Navbar/Navbar'
+import Navbar from '@components/Navbar/Navbar'
+import Footer from '@components/Footer'
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div>
+    <>
       <Navbar />
-      {children}
-      <footer>this is de footer</footer>
-    </div>
+      <main className="p-10">{children}</main>
+      <Footer />
+    </>
   )
 }
 

@@ -1,15 +1,36 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Avocado, Basket } from '@components/SVGIcons'
+import { useCart } from '@store/Cart'
 
 export default function Navbar() {
+  const { pathname } = useRouter()
+  const { count: cartCount } = useCart()
+
   return (
-    <nav>
-      <menu>
+    <nav className="shadow-lg font-medium md:text-lg text-md">
+      <menu className="flex justify-around m-0 p-0">
         <Link href="/">
-          <a>Home</a>
+          <a
+            className={
+              'px-3 py-4 flex space-x-2 items-center hover:bg-gray-200 ' +
+              (pathname === '/' ? 'bg-gray-200' : '')
+            }
+          >
+            <Avocado size="36" /> <span>Avo Store</span>
+          </a>
         </Link>
-        <Link href="/about">
-          <a>About</a>
+        <Link href="/cart">
+          <a
+            className={
+              'px-3 py-4 flex space-x-2 items-center hover:bg-gray-200 ' +
+              (pathname === '/cart' ? 'bg-gray-200' : '')
+            }
+          >
+            <Basket size="36" />{' '}
+            <span>Canasta {cartCount ? `(${cartCount})` : null}</span>
+          </a>
         </Link>
       </menu>
     </nav>

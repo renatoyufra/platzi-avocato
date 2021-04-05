@@ -1,5 +1,5 @@
+import ProductList from '@components/Products/ProductList'
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar/Navbar'
 
 const HomePage = () => {
   const [productList, setProductList] = useState<TProduct[]>([])
@@ -8,17 +8,14 @@ const HomePage = () => {
     window
       .fetch('/api/avo')
       .then((response) => response.json())
-      .then(({ data, length }) => {
+      .then(({ data }: TAPIAvoResponse) => {
         setProductList(data)
       })
   }, [])
 
   return (
-    <div>
-      <div>Platzi and Next.js!</div>
-      {productList.map((product) => (
-        <div>{product.image}</div>
-      ))}
+    <div className="font-montserrat">
+      <ProductList products={productList} />
     </div>
   )
 }

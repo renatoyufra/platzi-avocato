@@ -1,14 +1,19 @@
 import { AppProps } from 'next/app'
 import Layout from 'components/Layout'
+import '../global.css'
+
+import CartProvider from '@store/Cart'
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Providers - Context/Providers, Theme, Data
   // Layout
   // props adicionales
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CartProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CartProvider>
   )
 }
 

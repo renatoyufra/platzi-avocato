@@ -8,7 +8,7 @@ type ProductListProps = {
 const mapProductsToCards = (products: TProduct[]) =>
   products.map(({ name, id, price, image }) => (
     <Link key={id} href="/product/[id]" as={`/product/${id}`} passHref>
-      <a className="border-2 rounded-xl  max-w-md border-gray-300">
+      <a className="border rounded-md max-w-md border-gray-300 p-1">
         <article className=" flex flex-col items-center">
           <img src={image} alt={name} />
           <div className="flex flex-col border-t w-full p-3">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import AddToCart from '@components/ProductSummary/AddToCart'
-
+import fetch from 'isomorphic-unfetch'
 const ProductPage = () => {
   // const [product, setProduct] = useState<TProduct>()
   const [product, setProduct] = useState<TProduct | null>(null)
@@ -12,8 +12,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     id &&
-      window
-        .fetch(`/api/avo/${id}`)
+      fetch(`/api/avo/${id}`)
         .then((response) => response.json())
         .then((data) => {
           setProduct(data)

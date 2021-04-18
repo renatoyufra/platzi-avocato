@@ -1,18 +1,15 @@
 import ProductList from '@components/Products/ProductList'
 import React, { useEffect, useState } from 'react'
 
-const HomePage = () => {
-  const [productList, setProductList] = useState<TProduct[]>([])
+export const getServerSideProps = async () => {
+  const response = await fetch(`${process.env.BACKEND_URL}api/avo`)
+  const { data: productList }: TAPIAvoResponse = await response.json()
+  return {
+    props: { productList },
+  }
+}
 
-  useEffect(() => {
-    window
-      .fetch('/api/avo')
-      .then((response) => response.json())
-      .then(({ data }: TAPIAvoResponse) => {
-        setProductList(data)
-      })
-  }, [])
-
+const HomePage = ({ productList }: { productList: TProduct[] }) => {
   return (
     <div className="font-montserrat">
       <ProductList products={productList} />

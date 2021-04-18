@@ -2,7 +2,8 @@ import ProductList from '@components/Products/ProductList'
 import React, { useEffect, useState } from 'react'
 
 export const getServerSideProps = async () => {
-  const response = await fetch(`${process.env.BACKEND_URL}api/avo`)
+  const BASE_URL = process.env.BACKEND_URL || process.env.VERCEL_URL
+  const response = await fetch(`${BASE_URL}api/avo`)
   const { data: productList }: TAPIAvoResponse = await response.json()
   return {
     props: { productList },

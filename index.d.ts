@@ -32,3 +32,7 @@ type TAPIAvoResponse = {
   data: TProduct[]
   error?: string | undefined
 }
+
+type TAPIQuestionResponse = {
+  data: string
+}

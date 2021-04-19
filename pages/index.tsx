@@ -1,5 +1,5 @@
 import ProductList from '@components/Products/ProductList'
-import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export const getServerSideProps = async () => {
   const BASE_URL =
@@ -14,6 +14,11 @@ export const getServerSideProps = async () => {
 const HomePage = ({ productList }: { productList: TProduct[] }) => {
   return (
     <div className="font-montserrat">
+      <div className="flex justify-center text-blue-500 tracking-tighter text-sm">
+        <Link href="/yes-or-no">
+          <a>¿Debería comer una palta hoy?</a>
+        </Link>
+      </div>
       <ProductList products={productList} />
     </div>
   )
